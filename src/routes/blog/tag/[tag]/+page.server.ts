@@ -29,5 +29,6 @@ async function getFilteredPosts(tag: string) {
 export async function load({params}) {
     const tag = params.tag
     const posts = await getFilteredPosts(tag)
-    return { posts }
+    return { posts,
+    tag}
 }
