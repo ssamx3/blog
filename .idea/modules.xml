@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../abeyance/.idea/heliumhome.iml" filepath="$PROJECT_DIR$/../abeyance/.idea/heliumhome.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/samblog.iml" filepath="$PROJECT_DIR$/.idea/samblog.iml" />
     </modules>
   </component>

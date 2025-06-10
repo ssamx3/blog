@@ -23,14 +23,6 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 </svelte:head>
 
-<div class="py-2">
-    {#each data.categories as category}
-        <a href="/blog/tag/{category}" class="inline-flex inset-shadow-purple-200 inset-shadow-sm justify-center items-center bg-purple-300/30 m-1 p-1 border-2 border-purple-200 rounded-xl text-purple-300 hover:rotate-z-1 hover:scale-120 transition duration-300 ease-bounceback">
-            &num;{category}
-        </a>
-    {/each}
-</div>
-
 <div class="flex flex-wrap justify-start">
     <section class="flex flex-row flex-wrap">
 

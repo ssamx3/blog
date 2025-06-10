@@ -1,1 +1,62 @@
 @import 'tailwindcss';
+
+
+@keyframes my-animation {
+
+}
+
+@theme {
+    --ease-bounceback: cubic-bezier(0.68,-0.6,0.32,1.6);
+    --ease-easyease: cubic-bezier(0.45,0,0.55,1);
+
+    --animate-wiggle: wiggle 0.5s ;
+    @keyframes wiggle {
+        0%,
+        100% {
+            transform: translateX(0px) translateY(0px) scaleX(100%) scaleY(105%) rotate(0deg) skewX(0deg) skewY(0deg);
+        }
+
+
+    }
+
+
+}
+
+@keyframes fade-in {
+    from { opacity: 0; }
+
+}
+
+@keyframes fade-out {
+    to { opacity: 0; }
+
+}
+
+@keyframes slide-from-right {
+    from {
+        transform: translateY(300px) scaleX(60%) scaleY(80%) ;
+        filter: blur(10px);
+    }
+}
+
+
+@keyframes slide-to-left {
+    to {
+        transform: translateY(-300px) scaleX(60%) scaleY(80%) ;
+        filter: blur(10px);
+    }
+}
+
+::view-transition-old(root) {
+    animation: 90ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
+    300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left;
+}
+
+::view-transition-new(root) {
+    animation: 210ms cubic-bezier(0, 0, 0.2, 1) 90ms both fade-in,
+    300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-right;
+}
+
+.prose h1 { @apply text-3xl italic font-serif ; }
+.prose p { @apply mb-4  font-mono text-gray-700; }
+.prose h2 { @apply text-2xl font-semibold mb-3; }

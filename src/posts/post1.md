@@ -1,13 +1,18 @@
 ---
-title: nettles
-description: ethel cain
-date: '6-6-2025'
+title: first post
+description: 
+date: '6-10-2025'
 categories:
-  - music
+  - personal
+  - projects
+  - blog
+  - dev
+  - sveltekit
+  
 published: true
 ---
-# we were in a race
-to grow up
-yesterday to today until tomorrow \
-_but_ when the plant blew up \
-a piece of shrapnel came and slowed that part of you 
+
+
+Hello! welcome to my blog :)  
+I had a lot of fun making this, so heres a walkthrough of everything I used to make it  
+For the framework, I used 
