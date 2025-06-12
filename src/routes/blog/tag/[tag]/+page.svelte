@@ -23,16 +23,6 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 </svelte:head>
 
-<header class="inset-shadow-purple-200 inset-shadow-sm bg-purple-50/30 m-1 p-1 rounded-2xl text-purple-300 mx-auto py-2 max-w-2xl flex justify-center items-center">
-    <div class="flex flex-row items-center justify-between w-full">
-        <a class="inline-flex inset-shadow-purple-200 inset-shadow-sm justify-center items-center bg-white-300/40 m-1 p-1 px-1.5 border-2 border-purple-100 rounded-xl text-purple-300 hover:rotate-z-1 hover:scale-120 transition duration-300 ease-bounceback"
-           href="/."
-        >←
-        </a>
-        <h1 class="px-1.5 py-2  text-xl text-purple-200/80">#{data.tag}</h1>
-        <div class="w-8"></div> <!-- Empty spacer div to balance the button -->
-    </div>
-</header>
 <div class="flex flex-wrap justify-start">
 
     <section class="flex flex-row flex-wrap">

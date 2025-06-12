@@ -24,15 +24,10 @@
 </svelte:head>
 
 
-<style>
-    .sidebar {
-        view-transition-name: header;
-    }
-</style>
 <!-- Your persistent sidebar   -->
 
-<div class="fixed top-4 bottom-4 left-4 z-30 w-60 rounded-xl py-4 sidebar" style="view-transition-name: none;">
-    <div class="h-full bg-gray-100 rounded-xl p-2 z-30 ">
+<div class="fixed top-4 bottom-4 left-4  w-60 rounded-xl py-4 sidebar" style="view-transition-name: none;">
+    <div class="h-full bg-gray-100 rounded-xl p-2 ">
         <div class="h-full overflow-y-auto scrollbar-hide">
             <section>
                 <ul class="box flex-column flex-wrap">

@@ -1,14 +1,40 @@
-import type {Post} from '$lib/types'
+import type { Post } from '$lib/types'
 
-export async function load({fetch}) {
-    const response = await fetch('/api/posts')
-    const posts: Post[] = await response.json()
 
-    const allCategories = posts.flatMap(post => post.categories)
-    const uniqueCategories = [...new Set(allCategories)]
+async function getFilteredPosts(tag?: string) {
+    let posts: Post[] = []
 
-    return {
-        posts,
-        categories: uniqueCategories
+    const paths = import.meta.glob('/src/posts/*.md', {eager: true})
+
+    for (const path in paths) {
+        const file = paths[path]
+        const slug = path.split('/').at(-1)?.replace('.md', '')
+
+        if (file && typeof file == 'object' && 'metadata' in file && slug) {
+            const metadata = file.metadata as Omit<Post, 'slug'>
+            const post = {...metadata, slug} satisfies Post
+            // Include all posts if tag is provided, otherwise only published ones
+            if (tag || post.published) {
+                posts.push(post)
+            }
+        }
     }
+
+    posts = posts.sort((first, second) =>
+        new Date(second.date).getTime() - new Date(first.date).getTime()
+    )
+
+    // Only filter by tag if one is provided
+    if (tag) {
+        posts = posts.filter(post => post.categories.includes(tag))
+    }
+
+    return posts
+}
+
+export async function load({params}) {
+    const tag = params.tag
+    const posts = await getFilteredPosts(tag)
+    return { posts,
+    tag}
 }
