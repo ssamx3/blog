@@ -12,7 +12,7 @@
         // Check for Cmd+K (Mac) or Ctrl+K (Windows/Linux)
         if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') {
             event.preventDefault();
-            sidebarVisible = !sidebarVisible;
+            sidebarVisible = !sidebarVisible
         }
     }
 
@@ -41,23 +41,31 @@
 </svelte:head>
 
 <div class="flex min-h-screen">
+
     <!-- Sidebar -->
     <div class="fixed top-4 bottom-4 left-4 w-60 rounded-lg py-4 sidebar transition-all duration-300 ease-in-out-quad"
-         class:translate-x-[-100%]={!sidebarVisible}>
+         class:translate-x-[-110%]={!sidebarVisible}>
         <div class="h-full border border-gray-200 bg-gradient-to-b from-indigo-50 to-purple-100  rounded-lg p-2">
             <div class="h-full overflow-y-auto scrollbar-hide">
                 <section>
                     <ul class="box flex-column flex-wrap">
                         {#if data.tag}
-                        <div class="rounded-md px-5 py-2  ">
+                        <div class="rounded-md px-5 inset-shadow-white/20 inset-shadow-sm py-2 flex flex-row justify-between items-center">
                             <p class="mt-2 text-md italic font-serif tracking-tight text-gray-600 truncate text-ellipsis">&nbsp;/posts/{data.tag}</p>
+                            <button class="" on:click={()=>sidebarVisible = !sidebarVisible}>
+                                x
+                            </button>
                         </div>
                     {/if}
 
                     {#if !data.tag}
-                        <div class="rounded-md px-5 inset-shadow-white/20 inset-shadow-sm py-2  ">
+                        <div class="rounded-md px-5 inset-shadow-white/20 inset-shadow-sm py-2 flex flex-row justify-between items-center">
                             <p class="mt-2 text-md italic font-serif tracking-tight text-gray-600 truncate text-ellipsis">&nbsp;/posts</p>
+                            <button class="" on:click={()=>sidebarVisible = !sidebarVisible}>
+                                x
+                            </button>
                         </div>
+
                     {/if}
 
 
@@ -77,9 +85,16 @@
         </div>
     </div>
 
+        <button class="fixed top-100 left-4 h-7 w-7 flex items-center justify-center
+                       bg-gradient-to-b from-indigo-50 to-purple-100 text-black text-lg rounded-lg
+                       transition duration-300 font:serif ease-in-out z-50 " class:translate-x-[-210%]={sidebarVisible}
+                on:click={()=>sidebarVisible = !sidebarVisible}>
+            >
+        </button>
+
     <!-- Main content -->
-    <main class="flex-1 transition-all duration-300 ease-in-out" 
-          class:ml-72={sidebarVisible} 
+    <main class="flex-1 transition-all duration-300 ease-in-out"
+          class:ml-72={sidebarVisible}
           class:ml-4={!sidebarVisible}>
         {@render children()}
     </main>
