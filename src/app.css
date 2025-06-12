@@ -1,40 +1,28 @@
 @import 'tailwindcss';
 
 
-@keyframes my-animation {
-
-}
-
 @theme {
-    --ease-bounceback: cubic-bezier(0.68,-0.6,0.32,1.6);
-    --ease-easyease: cubic-bezier(0.45,0,0.55,1);
-
-    --animate-wiggle: wiggle 0.5s ;
-    @keyframes wiggle {
-        0%,
-        100% {
-            transform: translateX(0px) translateY(0px) scaleX(100%) scaleY(105%) rotate(0deg) skewX(0deg) skewY(0deg);
-        }
-
-
-    }
-
-
+    --ease-bounceback: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+    --ease-easyease: cubic-bezier(0.45, 0, 0.55, 1);
 }
 
 @keyframes fade-in {
-    from { opacity: 0; }
+    from {
+        opacity: 0;
+    }
 
 }
 
 @keyframes fade-out {
-    to { opacity: 0; }
+    to {
+        opacity: 0;
+    }
 
 }
 
 @keyframes slide-from-right {
     from {
-        transform: translateY(300px) scaleX(60%) scaleY(80%) ;
+        transform: translateY(300px) scaleX(60%) scaleY(80%);
         filter: blur(10px);
     }
 }
@@ -42,7 +30,7 @@
 
 @keyframes slide-to-left {
     to {
-        transform: translateY(-300px) scaleX(60%) scaleY(80%) ;
+        transform: translateY(-300px) scaleX(60%) scaleY(80%);
         filter: blur(10px);
     }
 }
@@ -57,43 +45,209 @@
     300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-right;
 }
 
-.prose h1 { @apply text-3xl italic font-serif ; }
-.prose p { @apply mb-4   text-gray-700; }
-.prose h2 { @apply text-2xl font-semibold mb-3; }
 
 html, body {
     margin: 0;
     padding: 0;
-    /* Prevents horizontal scrollbar if content slightly overflows, or if w-screen is used somewhere */
     overflow-x: hidden;
-    /* Ensure html takes full height, necessary for body min-height to work correctly */
     height: 100%;
 }
 
 body {
-    /* Use min-h-screen to ensure body is at least viewport height,
-       but expands with content. This is where your background will effectively go. */
     min-height: 100vh;
-    /* Apply your Tailwind background utility here or directly on the body tag if you can */
-    /*
-       Important: If you're using PostCSS with Tailwind, you can often put Tailwind classes directly
-       on the body in your index.html. If not, this is the place for the raw CSS property.
-    */
-    background-color: #ffffff; /* Equivalent to bg-slate-200 */
+    background-color: #ffffff
 }
 
-/* Hide scrollbar for Chrome, Safari and Opera */
 .scrollbar-hide::-webkit-scrollbar {
     display: none;
 }
 
-/* Hide scrollbar for IE, Edge and Firefox */
 .scrollbar-hide {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
-.sidebar {
-    view-transition-name: header;
+
+
+/* MARKDOWN STYLES */
+/* Headings */
+.prose h1 {
+    @apply text-3xl italic font-serif;
 }
 
+.prose h2 {
+    @apply text-2xl font-semibold mb-3;
+}
+
+.prose h3 {
+    @apply text-xl font-semibold mb-2 text-gray-800;
+}
+
+.prose h4 {
+    @apply text-lg font-medium mb-2 text-gray-800;
+}
+
+.prose h5 {
+    @apply text-base font-medium mb-1 text-gray-800;
+}
+
+.prose h6 {
+    @apply text-sm font-medium mb-1 text-gray-600;
+}
+
+/* Paragraphs and text */
+.prose p {
+    @apply mb-4 text-gray-700;
+}
+
+.prose strong {
+    @apply font-semibold text-gray-900;
+}
+
+.prose em {
+    @apply italic;
+}
+
+.prose del {
+    @apply line-through text-gray-500;
+}
+
+.prose mark {
+    @apply bg-purple-100 px-1;
+}
+
+.prose small {
+    @apply text-sm text-gray-600;
+}
+
+/* Links */
+.prose a {
+    @apply text-blue-600 hover:text-blue-800 underline;
+}
+
+.prose a:visited {
+    @apply text-purple-600;
+}
+
+/* Lists */
+.prose ul {
+    @apply mb-4 pl-6 list-disc text-gray-700;
+}
+
+.prose ol {
+    @apply mb-4 pl-6 list-decimal text-gray-700;
+}
+
+.prose li {
+    @apply mb-1;
+}
+
+.prose li > p {
+    @apply mb-2;
+}
+
+.prose li > ul, .prose li > ol {
+    @apply mt-2 mb-2;
+}
+
+/* Blockquotes */
+.prose blockquote {
+    @apply border-l-4 border-gray-300 pl-4 my-4 italic text-gray-600;
+}
+
+.prose blockquote p {
+    @apply mb-2;
+}
+
+/* Code */
+.prose code {
+    @apply bg-gray-100 px-1 py-0.5 rounded text-sm font-mono text-gray-800;
+}
+
+.prose pre {
+    @apply bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto mb-4;
+}
+
+.prose pre code {
+    @apply bg-transparent p-0 text-gray-100;
+}
+
+/* Tables */
+.prose table {
+    @apply w-full border-collapse mb-4;
+}
+
+.prose thead {
+    @apply bg-gray-50;
+}
+
+.prose th {
+    @apply border border-gray-300 px-4 py-2 text-left font-semibold text-gray-900;
+}
+
+.prose td {
+    @apply border border-gray-300 px-4 py-2 text-gray-700;
+}
+
+.prose tbody tr:nth-child(even) {
+    @apply bg-gray-50;
+}
+
+/* Horizontal rule */
+.prose hr {
+    @apply border-0 border-t border-gray-300 my-8;
+}
+
+/* Images */
+.prose img {
+    @apply max-w-full h-auto rounded-lg shadow-sm mb-4;
+}
+
+/* Figure and figcaption */
+.prose figure {
+    @apply mb-4;
+}
+
+.prose figcaption {
+    @apply text-sm text-gray-600 text-center mt-2 italic;
+}
+
+/* Definition lists */
+.prose dl {
+    @apply mb-4;
+}
+
+.prose dt {
+    @apply font-semibold text-gray-900 mb-1;
+}
+
+.prose dd {
+    @apply ml-4 mb-2 text-gray-700;
+}
+
+/* Keyboard and sample text */
+.prose kbd {
+    @apply bg-gray-200 border border-gray-400 rounded px-1 py-0.5 text-xs font-mono;
+}
+
+.prose samp {
+    @apply bg-gray-100 px-1 py-0.5 rounded text-sm font-mono;
+}
+
+/* Abbreviations */
+.prose abbr {
+    @apply border-b border-dotted cursor-help;
+}
+
+/* Details and summary */
+.prose details {
+    @apply mb-4;
+}
+
+.prose summary {
+    @apply cursor-pointer font-medium text-gray-800 mb-2;
+}
+
+.prose details[open] summary {
+    @apply mb-3;
+}

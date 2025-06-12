@@ -37,11 +37,8 @@
 
 
         <div class="py-2">
-            <a href="/." class="inline-flex inset-shadow-purple-200 inset-shadow-sm justify-center items-center bg-white-300/40 m-1 p-1 px-1.5 border-2 border-purple-100 rounded-xl text-purple-300 hover:rotate-z-1 hover:scale-120 transition duration-300 ease-bounceback"
-                    >←
-            </a>
             {#each data.meta.categories as category}
-                <a href="/blog/tag/{category}" class="inline-flex inset-shadow-purple-200 inset-shadow-sm justify-center items-center bg-purple-300/30 m-1 p-1 border-2 border-purple-200 rounded-xl text-purple-300 hover:rotate-z-1 hover:scale-120 transition duration-300 ease-bounceback">
+                <a href="/blog/tag/{category}" class="inline-flex inset-shadow-indigo-200/20  inset-shadow-sm justify-center items-center bg-gradient-to-b from-white to-indigo-50 m-1 p-1 rounded-xl text-indigo-200 hover:rotate-z-1 hover:scale-120 transition duration-300 ease-bounceback">
                     &num;{category}
                 </a>
             {/each}

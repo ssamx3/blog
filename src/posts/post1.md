@@ -14,17 +14,22 @@ published: true
 ---
 
 
-Hello! welcome to my blog :)  
-I had a lot of fun making this, so heres a walkthrough of everything I used to make it  
+<mark>Hello</mark>!! welcome to my blog :) 
+
+I had a lot of fun making this, so heres a walkthrough of everything I used to make it.  
   
+
+
 For the framework, I used sveltekit and mdsvex. Sveltekit is a really nice framework because it basically feels to me like just fancier 
 html, and I really enjoy working in html. Mdsvex is a markdown precursor for svelte, and I found this through a blog post about
 creating blogs :P
   
+
 The main look of the app is just meant to be very simple, with minimal
 styling, as it is meant to put emphasis on just the content. However, I did 
 enjoy adding fancy animations when you hover on things :)
   
+
 This was also the first time i've forayed into tailwind, and I have to say 
 I really enjoyed using it! It makes a lot of things so much simpler to do, and it makes hover animations lovely. I will
 probably now end up rewriting my main landing page with it, as i like it so much :D

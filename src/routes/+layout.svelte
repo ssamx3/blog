@@ -2,9 +2,26 @@
     import {formatDate} from '$lib/utils'
     import * as config from '$lib/config'
     import {onNavigate} from '$app/navigation';
+    import {onMount} from 'svelte';
     import '../app.css';
 
     let {data, children} = $props()
+    let sidebarVisible = $state(true);
+
+    function handleKeydown(event: KeyboardEvent) {
+        // Check for Cmd+K (Mac) or Ctrl+K (Windows/Linux)
+        if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') {
+            event.preventDefault();
+            sidebarVisible = !sidebarVisible;
+        }
+    }
+
+    onMount(() => {
+        window.addEventListener('keydown', handleKeydown);
+        return () => {
+            window.removeEventListener('keydown', handleKeydown);
+        };
+    });
 
     onNavigate((navigation) => {
         if (!document.startViewTransition) return;
@@ -23,28 +40,47 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 </svelte:head>
 
+<div class="flex min-h-screen">
+    <!-- Sidebar -->
+    <div class="fixed top-4 bottom-4 left-4 w-60 rounded-lg py-4 sidebar transition-all duration-300 ease-in-out-quad"
+         class:translate-x-[-100%]={!sidebarVisible}>
+        <div class="h-full border border-gray-200 bg-gradient-to-b from-indigo-50 to-purple-100  rounded-lg p-2">
+            <div class="h-full overflow-y-auto scrollbar-hide">
+                <section>
+                    <ul class="box flex-column flex-wrap">
+                        {#if data.tag}
+                        <div class="rounded-md px-5 py-2  ">
+                            <p class="mt-2 text-md italic font-serif tracking-tight text-gray-600 truncate text-ellipsis">&nbsp;/posts/{data.tag}</p>
+                        </div>
+                    {/if}
 
-<!-- Your persistent sidebar   -->
+                    {#if !data.tag}
+                        <div class="rounded-md px-5 inset-shadow-white/20 inset-shadow-sm py-2  ">
+                            <p class="mt-2 text-md italic font-serif tracking-tight text-gray-600 truncate text-ellipsis">&nbsp;/posts</p>
+                        </div>
+                    {/if}
 
-<div class="fixed top-4 bottom-4 left-4  w-60 rounded-xl py-4 sidebar" style="view-transition-name: none;">
-    <div class="h-full bg-gray-100 rounded-xl p-2 ">
-        <div class="h-full overflow-y-auto scrollbar-hide">
-            <section>
-                <ul class="box flex-column flex-wrap">
-                    {#each data.posts as post}
-                        <li class="px-1 py-1">
-                            <a href={`/blog/${post.slug}`}>
-                                <div class="rounded-md px-5 py-2 bg-gray-100 hover:bg-gray-200 transition hover:scale-105 hover:rotate-z-[-0.2deg] hover:rotate-x-20 ease-bounceback duration-250">
-                                    <p class="mt-2 text-md italic font-serif tracking-tight text-gray-950 truncate text-ellipsis">{post.title}</p>
-                                    <p class="pmt-2 max-w-lg text-xs text-gray-400 max-lg:">{formatDate(post.date)}</p>
-                                </div>
-                            </a>
-                        </li>
-                    {/each}
-                </ul>
-            </section>
+
+                        {#each data.posts as post}
+                            <li class="px-1 py-2">
+                                <a href={`/blog/${post.slug}`}>
+                                    <div class="hover:bg-white/40  inset-shadow-white/30  inset-shadow-sm rounded-md px-5 py-2  transition hover:scale-105 hover:rotate-z-[-0.5deg] hover:rotate-x-20 ease-bounceback duration-250">
+                                        <p class="mt-2 text-md italic font-serif tracking-tight text-gray-950 truncate text-ellipsis">{post.title}</p>
+                                        <p class="pmt-2 max-w-lg text-xs text-gray-400 max-lg:">{formatDate(post.date)}</p>
+                                    </div>
+                                </a>
+                            </li>
+                        {/each}
+                    </ul>
+                </section>
+            </div>
         </div>
     </div>
-</div>
 
-{@render children()}
+    <!-- Main content -->
+    <main class="flex-1 transition-all duration-300 ease-in-out" 
+          class:ml-72={sidebarVisible} 
+          class:ml-4={!sidebarVisible}>
+        {@render children()}
+    </main>
+</div>
