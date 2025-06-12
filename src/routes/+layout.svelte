@@ -2,6 +2,7 @@
     import {formatDate} from '$lib/utils'
     import * as config from '$lib/config'
     import {onNavigate} from '$app/navigation';
+    import '../app.css';
 
     let {data, children} = $props()
 
@@ -25,7 +26,7 @@
 <!-- Your persistent sidebar -->
 <div class="fixed top-4 left-4 z-50 px-3 py-2 ">
 <div class="px-3 py-2">
-    <div class="flex flex-wrap justify-start bg-gray-100 py-10 px-2 w-60 rounded-xl ">
+    <div class="flex flex-wrap justify-start bg-gray-100 py-10 px-2 w-60 rounded-xl overflow-y-auto ">
         <section class="flex flex-column">
             <ul class=".box flex-column flex-wrap">
                 {#each data.posts as post}
