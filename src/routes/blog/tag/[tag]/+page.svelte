@@ -29,7 +29,7 @@
            href="/."
         >←
         </a>
-        <h1 class="px-1.5 py-2 font-serif text-xl text-purple-200/80">#{data.tag}</h1>
+        <h1 class="px-1.5 py-2  text-xl text-purple-200/80">#{data.tag}</h1>
         <div class="w-8"></div> <!-- Empty spacer div to balance the button -->
     </div>
 </header>

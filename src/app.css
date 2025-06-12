@@ -58,5 +58,26 @@
 }
 
 .prose h1 { @apply text-3xl italic font-serif ; }
-.prose p { @apply mb-4  font-mono text-gray-700; }
+.prose p { @apply mb-4   text-gray-700; }
 .prose h2 { @apply text-2xl font-semibold mb-3; }
+
+html, body {
+    margin: 0;
+    padding: 0;
+    /* Prevents horizontal scrollbar if content slightly overflows, or if w-screen is used somewhere */
+    overflow-x: hidden;
+    /* Ensure html takes full height, necessary for body min-height to work correctly */
+    height: 100%;
+}
+
+body {
+    /* Use min-h-screen to ensure body is at least viewport height,
+       but expands with content. This is where your background will effectively go. */
+    min-height: 100vh;
+    /* Apply your Tailwind background utility here or directly on the body tag if you can */
+    /*
+       Important: If you're using PostCSS with Tailwind, you can often put Tailwind classes directly
+       on the body in your index.html. If not, this is the place for the raw CSS property.
+    */
+    background-color: #ffffff; /* Equivalent to bg-slate-200 */
+}
