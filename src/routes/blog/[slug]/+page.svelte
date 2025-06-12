@@ -7,6 +7,11 @@
     onNavigate((navigation) => {
         if (!document.startViewTransition) return;
 
+        const sidebar = document.querySelector('.sidebar');
+        if (sidebar) {
+            sidebar.style.viewTransitionName = 'none';
+        }
+
         return new Promise((resolve) => {
             document.startViewTransition(async () => {
                 resolve();

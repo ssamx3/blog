@@ -47,12 +47,12 @@
     }
 }
 
-::view-transition-old(root) {
+:root::view-transition-old(root) {
     animation: 90ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
     300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left;
 }
 
-::view-transition-new(root) {
+:root::view-transition-new(root) {
     animation: 210ms cubic-bezier(0, 0, 0.2, 1) 90ms both fade-in,
     300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-right;
 }
@@ -81,3 +81,19 @@ body {
     */
     background-color: #ffffff; /* Equivalent to bg-slate-200 */
 }
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.sidebar {
+    view-transition-name: header;
+}
+
