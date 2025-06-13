@@ -52,7 +52,7 @@
                         {#if data.tag}
                         <div class="rounded-md px-5 inset-shadow-white/20 inset-shadow-sm py-2 flex flex-row justify-between items-center">
                             <p class="mt-2 text-md italic font-serif tracking-tight text-gray-600 truncate text-ellipsis">&nbsp;/posts/{data.tag}</p>
-                            <button class="" on:click={()=>sidebarVisible = !sidebarVisible}>
+                            <button class="text-gray-600 font-serif " on:click={()=>sidebarVisible = !sidebarVisible}>
                                 x
                             </button>
                         </div>
@@ -61,7 +61,7 @@
                     {#if !data.tag}
                         <div class="rounded-md px-5 inset-shadow-white/20 inset-shadow-sm py-2 flex flex-row justify-between items-center">
                             <p class="mt-2 text-md italic font-serif tracking-tight text-gray-600 truncate text-ellipsis">&nbsp;/posts</p>
-                            <button class="" on:click={()=>sidebarVisible = !sidebarVisible}>
+                            <button class="text-gray-600 font-serif " on:click={()=>sidebarVisible = !sidebarVisible}>
                                 x
                             </button>
                         </div>
@@ -85,8 +85,8 @@
         </div>
     </div>
 
-        <button class="fixed top-100 left-4 h-7 w-7 flex items-center justify-center
-                       bg-gradient-to-b from-indigo-50 to-purple-100 text-black text-lg rounded-lg
+        <button class="fixed top-100  h-10 w-7 flex items-center justify-center
+                       bg-gradient-to-b from-indigo-50 to-purple-100 text-gray-600 font-serif text-lg rounded-r-lg
                        transition duration-300 font:serif ease-in-out z-50 " class:translate-x-[-210%]={sidebarVisible}
                 on:click={()=>sidebarVisible = !sidebarVisible}>
             >
