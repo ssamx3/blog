@@ -43,7 +43,7 @@
 <div class="flex min-h-screen">
 
     <!-- Sidebar -->
-    <div class="fixed top-4 bottom-4 left-4 w-60 rounded-lg py-4 sidebar transition-all duration-300 ease-in-out-quad"
+    <div class="fixed top-4 bottom-4 left-4 w-60 rounded-xl py-4 sidebar transition-all duration-300 ease-in-out-quad"
          class:translate-x-[-110%]={!sidebarVisible}>
         <div class="h-full border border-gray-200 bg-gradient-to-b from-indigo-50 to-purple-100  rounded-lg p-2">
             <div class="h-full overflow-y-auto scrollbar-hide">
